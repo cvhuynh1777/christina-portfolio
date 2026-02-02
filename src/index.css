@@ -1,0 +1,47 @@
+/* ✅ Load fonts FIRST */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
+
+
+/* Tailwind layers */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* 🌸 Retro Pink Scrollbar */
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffd6e7; /* light pink */
+  border: 3px solid #f4b6cc;
+  image-rendering: pixelated;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f28ab5; /* darker pink */
+  border: 3px solid #d96d96;
+  border-radius: 6px;
+  image-rendering: pixelated;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff9ec9;
+}
+
+/* Firefox Scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #f28ab5 #ffd6e7;
+}
+
+/* ⭐ Draggable window top bar cursors */
+.pixel-drag-area {
+  cursor: grab !important;
+}
+
+.pixel-drag-area:active {
+  cursor: grabbing !important;
+}
