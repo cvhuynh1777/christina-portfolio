@@ -16,10 +16,7 @@ export default function App() {
         <Header />
         <Resume />
         <Contact />
-      </PixelBrowser>
 
-      {/* Projects (always framed) */}
-      <PixelBrowser>
         <Projects />
       </PixelBrowser>
 
