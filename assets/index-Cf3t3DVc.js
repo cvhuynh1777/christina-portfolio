@@ -99,4 +99,4 @@ Error generating stack: `+a.message+`
           text-[clamp(14px,3vw,22px)]
           text-center
           mb-8
-        `,children:"Contact Me"}),X.jsxs("p",{className:"text-center text-pink-700",children:["Email: christina.v.huynh1@gmail.com ",X.jsx("br",{}),"GitHub: github.com/cvhuynh1777 ",X.jsx("br",{}),"LinkedIn: linkedin.com/in/chrisvh7"]})]})}function Og(){return X.jsx("div",{className:"relative min-h-screen bg-pink-200",children:X.jsxs(Tg,{hideFrameOnMobile:!0,children:[X.jsx(_g,{}),X.jsx(Ag,{}),X.jsx(Mg,{}),X.jsx(Dg,{})]})})}Pm.createRoot(document.getElementById("root")).render(X.jsx(Se.StrictMode,{children:X.jsx(Og,{})}));
+        `,children:"Contact Me"}),X.jsxs("p",{className:"text-center text-pink-700",children:["Email: christina.v.huynh1@gmail.com ",X.jsx("br",{}),"GitHub: github.com/cvhuynh1777 ",X.jsx("br",{}),"LinkedIn: linkedin.com/in/chrisvh7"]})]})}function Og(){return X.jsx("div",{className:"relative min-h-screen bg-pink-200",children:X.jsxs(Tg,{hideFrameOnMobile:!0,children:[X.jsx(_g,{}),X.jsx(Ag,{}),X.jsx(Dg,{}),X.jsx(Mg,{})]})})}Pm.createRoot(document.getElementById("root")).render(X.jsx(Se.StrictMode,{children:X.jsx(Og,{})}));
