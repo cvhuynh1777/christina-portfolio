@@ -2,18 +2,45 @@ import { useState, useEffect } from "react";
 import { Rnd } from "react-rnd";
 import windowFrame from "../assets/pixel-window.png";
 
-export default function PixelBrowser({ children }) {
+export default function PixelBrowser({ children, hideFrameOnMobile = false }) {
   /* ---------------- MOBILE DETECTION (FIXED) ---------------- */
-  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768);
+  const isMobile = window.innerWidth < 768;
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
+  if (isMobile && hideFrameOnMobile) {
+    return (
+      <div className="bg-pink-100 px-4 py-6">
+        {children}
+      </div>
+    );
+  }
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  if (isMobile) {
+    return (
+      <div className="bg-pink-100 min-h-screen flex justify-center px-3 py-6 overflow-x-hidden">
+        <div className="relative w-full max-w-[420px]">
+          <img
+            src={windowFrame}
+            className="w-full h-auto object-contain pointer-events-none select-none"
+            style={{ imageRendering: "pixelated" }}
+            alt="pixel window"
+          />
+
+          <div
+            className="absolute overflow-y-auto px-4 py-4"
+            style={{
+              top: "28%",
+              left: "9%",
+              right: "9%",
+              height: "52%",
+            }}
+          >
+            {children}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
 
   /* ---------------- DESKTOP WINDOW STATE ---------------- */
   const calcSize = () => ({

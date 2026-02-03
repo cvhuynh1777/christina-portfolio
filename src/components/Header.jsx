@@ -28,15 +28,14 @@ export default function Header() {
             max-w-prose
           "
         >
-          Hi, I’m Christina! I’m a Master&apos;s student based in California with
-          interests spanning{" "}
+          Hi, I’m Christina! I’m a Master&apos;s student based in California and I like{" "}
           <strong className="font-semibold text-pink-800">video games</strong>,{" "}
           <strong className="font-semibold text-pink-800">finance</strong>,{" "}
           <strong className="font-semibold text-pink-800">business</strong>,{" "}
           <strong className="font-semibold text-pink-800">development</strong>, and{" "}
           <strong className="font-semibold text-pink-800">AI/ML</strong>. I love
           building things that live at the crossroads of multiple disciplines, and
-          I enjoy blending creativity into my work through pixel art and UI design.
+          I enjoy blending creativity into my work.
           (I designed some of the assets you see in this portfolio!)
         </p>
       </div>

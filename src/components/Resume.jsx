@@ -4,16 +4,17 @@ export default function Resume() {
       <h2
         className="
           font-['Press_Start_2P']
-          text-center
+          text-left sm:text-center
           text-pink-600
           text-[clamp(14px,3vw,22px)]
-          mb-8
+          mb-6 sm:mb-8
         "
       >
         Resume
       </h2>
 
-      <div className="space-y-6 mb-12">
+      <div className="space-y-4 sm:space-y-6 mb-10 sm:mb-12">
+
 
         {/* Education */}
         <RetroBox title="Education">
