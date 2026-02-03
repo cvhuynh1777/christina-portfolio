@@ -43,30 +43,27 @@ export default function PixelBrowser({ children }) {
   /* ---------------- MOBILE VERSION ---------------- */
   if (isMobile) {
     return (
-      <div className="bg-pink-100 min-h-screen flex justify-center px-3 py-6 overflow-x-hidden">
-        <div className="relative w-full max-w-[420px] mt-4">
+      <div className="bg-pink-100 min-h-screen overflow-x-hidden">
+
+        {/* Pixel Browser Header */}
+        <div className="flex justify-center pt-6 px-4">
           <img
             src={windowFrame}
-            className="w-full h-auto object-contain pointer-events-none select-none"
+            className="w-full max-w-[420px] h-auto object-contain pointer-events-none select-none"
             style={{ imageRendering: "pixelated" }}
             alt="pixel window"
           />
-
-          <div
-            className="absolute overflow-y-auto p-4 text-center"
-            style={{
-              top: "26%",
-              left: "9%",
-              right: "9%",
-              bottom: "14%",
-            }}
-          >
-            {children}
-          </div>
         </div>
+
+        {/* Clean Content Section */}
+        <div className="max-w-[420px] mx-auto px-5 pt-6 pb-12 space-y-8 text-center">
+          {children}
+        </div>
+
       </div>
     );
   }
+
 
   /* ---------------- DESKTOP VERSION ---------------- */
   const bottomOffset = size.height * 0.09;
