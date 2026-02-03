@@ -15,9 +15,8 @@ export default function App() {
       <PixelBrowser hideFrameOnMobile>
         <Header />
         <Resume />
-        <Contact />
-
         <Projects />
+        <Contact />
       </PixelBrowser>
 
     </div>
