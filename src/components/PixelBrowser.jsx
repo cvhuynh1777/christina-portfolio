@@ -6,15 +6,17 @@ export default function PixelBrowser({ children, hideFrameOnMobile = false }) {
   /* ---------------- MOBILE DETECTION (FIXED) ---------------- */
   const isMobile = window.innerWidth < 768;
 
-  if (isMobile && hideFrameOnMobile) {
-    return (
-      <div className="bg-pink-100 px-4 py-6">
-        {children}
-      </div>
-    );
-  }
-
   if (isMobile) {
+    if (hideFrameOnMobile) {
+      // CLEAN MOBILE CONTENT (Resume / Experience)
+      return (
+        <div className="bg-pink-100 px-4 py-6">
+          {children}
+        </div>
+      );
+    }
+
+    // FRAMED MOBILE WINDOW (Projects only)
     return (
       <div className="bg-pink-100 min-h-screen flex justify-center px-3 py-6 overflow-x-hidden">
         <div className="relative w-full max-w-[420px]">
@@ -40,6 +42,7 @@ export default function PixelBrowser({ children, hideFrameOnMobile = false }) {
       </div>
     );
   }
+
 
 
   /* ---------------- DESKTOP WINDOW STATE ---------------- */

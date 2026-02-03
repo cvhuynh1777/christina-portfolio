@@ -84,14 +84,17 @@ export default function Resume() {
 function RetroBox({ title, children }) {
   return (
     <div
-      className="
-        bg-pink-50 border-4 border-pink-300 rounded-xl 
-        shadow-[4px_4px_0px_rgba(0,0,0,0.25)]
-        transition-all duration-200 ease-out
-        hover:-translate-y-1
-        hover:shadow-[6px_6px_0px_rgba(0,0,0,0.3)]
-      "
-    >
+    className="
+      bg-pink-50
+      border-2 sm:border-4 border-pink-300
+      rounded-lg sm:rounded-xl
+      shadow-sm sm:shadow-[4px_4px_0px_rgba(0,0,0,0.25)]
+      transition-all duration-200 ease-out
+      sm:hover:-translate-y-1
+      sm:hover:shadow-[6px_6px_0px_rgba(0,0,0,0.3)]
+    "
+  >
+  
       <div
         className="
           bg-pink-200 border-b-4 border-pink-300 px-3 py-2 
@@ -109,7 +112,7 @@ function RetroBox({ title, children }) {
         className="
           p-4
           font-['DM_Sans']
-          text-[17px]
+          text-[15px] sm:text-[17px]
           leading-relaxed
           text-pink-700
         "
