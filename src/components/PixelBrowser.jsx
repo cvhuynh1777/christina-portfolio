@@ -3,14 +3,46 @@ import { Rnd } from "react-rnd";
 import windowFrame from "../assets/pixel-window.png";
 
 export default function PixelBrowser({ children }) {
+  const isMobile = window.innerWidth < 768;
 
-  // ⭐ Initial size
+  /* ---------------- MOBILE VERSION ---------------- */
+  if (isMobile) {
+    return (
+      <div className="bg-pink-100 min-h-screen flex justify-center px-3 py-6 overflow-x-hidden">
+        <div className="relative w-full max-w-[420px] mt-4">
+
+          {/* Pixel Frame */}
+          <img
+            src={windowFrame}
+            className="w-full h-auto object-contain pointer-events-none select-none"
+            style={{ imageRendering: "pixelated" }}
+            alt="pixel window"
+          />
+
+          {/* Inner content */}
+          <div
+            className="absolute overflow-y-auto p-4"
+            style={{
+              top: "26%",
+              left: "9%",
+              right: "9%",
+              bottom: "14%",
+            }}
+          >
+            {children}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  /* ---------------- DESKTOP VERSION ---------------- */
+
   const calcSize = () => ({
     width: Math.min(window.innerWidth * 0.92, 1400),
     height: Math.min(window.innerHeight * 0.9, 1000),
   });
 
-  // ⭐ Max allowed size (near fullscreen)
   const calcMaxSize = () => ({
     width: window.innerWidth - 40,
     height: window.innerHeight - 40,
@@ -18,7 +50,7 @@ export default function PixelBrowser({ children }) {
 
   const [size, setSize] = useState(calcSize());
   const [maxSize, setMaxSize] = useState(calcMaxSize());
-  const [pos, setPos] = useState({ x: 80, y: 40 });
+  const [pos, setPos] = useState({ x: 40, y: 30 });
 
   useEffect(() => {
     const handleResize = () => {
@@ -29,13 +61,11 @@ export default function PixelBrowser({ children }) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Resize-handle offset (keeps it inside frame)
   const bottomOffset = size.height * 0.09;
   const rightOffset = size.width * 0.08;
 
   return (
-    <div className="bg-pink-100 h-screen relative overflow-hidden">
-
+    <div className="bg-pink-100 h-screen relative overflow-x-hidden">
       <Rnd
         size={size}
         position={pos}
@@ -46,14 +76,14 @@ export default function PixelBrowser({ children }) {
             height: ref.offsetHeight,
           })
         }
-        minWidth={600}
+        minWidth={700}
         minHeight={500}
         maxWidth={maxSize.width}
         maxHeight={maxSize.height}
         bounds="window"
         dragHandleClassName="pixel-drag-area"
         enableResizing={{ bottomRight: true }}
-
+        className="relative"
         resizeHandleComponent={{
           bottomRight: (
             <div
@@ -69,8 +99,6 @@ export default function PixelBrowser({ children }) {
             />
           ),
         }}
-
-        className="relative overflow-visible"
       >
         {/* Pixel Frame */}
         <img
