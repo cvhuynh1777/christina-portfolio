@@ -3,15 +3,48 @@ import { Rnd } from "react-rnd";
 import windowFrame from "../assets/pixel-window.png";
 
 export default function PixelBrowser({ children }) {
-  const isMobile = window.innerWidth < 768;
+  /* ---------------- MOBILE DETECTION (FIXED) ---------------- */
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  /* ---------------- DESKTOP WINDOW STATE ---------------- */
+  const calcSize = () => ({
+    width: Math.min(window.innerWidth * 0.92, 1400),
+    height: Math.min(window.innerHeight * 0.9, 1000),
+  });
+
+  const calcMaxSize = () => ({
+    width: window.innerWidth - 40,
+    height: window.innerHeight - 40,
+  });
+
+  const [size, setSize] = useState(calcSize);
+  const [maxSize, setMaxSize] = useState(calcMaxSize);
+  const [pos, setPos] = useState({ x: 40, y: 30 });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setSize(calcSize());
+      setMaxSize(calcMaxSize());
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   /* ---------------- MOBILE VERSION ---------------- */
   if (isMobile) {
     return (
       <div className="bg-pink-100 min-h-screen flex justify-center px-3 py-6 overflow-x-hidden">
         <div className="relative w-full max-w-[420px] mt-4">
-
-          {/* Pixel Frame */}
           <img
             src={windowFrame}
             className="w-full h-auto object-contain pointer-events-none select-none"
@@ -19,9 +52,8 @@ export default function PixelBrowser({ children }) {
             alt="pixel window"
           />
 
-          {/* Inner content */}
           <div
-            className="absolute overflow-y-auto p-4"
+            className="absolute overflow-y-auto p-4 text-center"
             style={{
               top: "26%",
               left: "9%",
@@ -37,30 +69,6 @@ export default function PixelBrowser({ children }) {
   }
 
   /* ---------------- DESKTOP VERSION ---------------- */
-
-  const calcSize = () => ({
-    width: Math.min(window.innerWidth * 0.92, 1400),
-    height: Math.min(window.innerHeight * 0.9, 1000),
-  });
-
-  const calcMaxSize = () => ({
-    width: window.innerWidth - 40,
-    height: window.innerHeight - 40,
-  });
-
-  const [size, setSize] = useState(calcSize());
-  const [maxSize, setMaxSize] = useState(calcMaxSize());
-  const [pos, setPos] = useState({ x: 40, y: 30 });
-
-  useEffect(() => {
-    const handleResize = () => {
-      setSize(calcSize());
-      setMaxSize(calcMaxSize());
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   const bottomOffset = size.height * 0.09;
   const rightOffset = size.width * 0.08;
 
@@ -100,7 +108,6 @@ export default function PixelBrowser({ children }) {
           ),
         }}
       >
-        {/* Pixel Frame */}
         <img
           src={windowFrame}
           className="w-full h-full object-fill pointer-events-none select-none"
@@ -108,13 +115,11 @@ export default function PixelBrowser({ children }) {
           alt="pixel window"
         />
 
-        {/* Drag area */}
         <div
           className="pixel-drag-area absolute left-0 right-0"
           style={{ top: "11%", height: "7%" }}
         />
 
-        {/* Inner content */}
         <div
           className="absolute overflow-y-auto p-4 sm:p-6 md:p-10"
           style={{
