@@ -70,29 +70,6 @@ export default function PixelBrowser({ children, hideFrameOnMobile = false }) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  /* ---------------- MOBILE VERSION ---------------- */
-  if (isMobile) {
-    return (
-      <div className="bg-pink-100 min-h-screen overflow-x-hidden">
-
-        {/* Pixel Browser Header */}
-        <div className="flex justify-center pt-6 px-4">
-          <img
-            src={windowFrame}
-            className="w-full max-w-[420px] h-auto object-contain pointer-events-none select-none"
-            style={{ imageRendering: "pixelated" }}
-            alt="pixel window"
-          />
-        </div>
-
-        {/* Clean Content Section */}
-        <div className="max-w-[420px] mx-auto px-5 pt-6 pb-12 space-y-8 text-center">
-          {children}
-        </div>
-
-      </div>
-    );
-  }
 
 
   /* ---------------- DESKTOP VERSION ---------------- */
